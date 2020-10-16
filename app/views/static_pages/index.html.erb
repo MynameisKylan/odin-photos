@@ -1,0 +1,16 @@
+<h1>Flickr Feed</h1>
+
+<%= form_with method: :get, local: true do |f| %>
+  <%= f.label :flickr_id, 'Enter Flickr ID' %><br/>
+  <%= f.text_field :flickr_id, value: (params[:flickr_id] if params[:flickr_id]) %><br/>
+
+  <%= f.submit 'Search' %>
+<% end %>
+
+<% if @photo_urls %>
+  <p>Showing <%= @name %>'s Photos:</p>
+
+  <% @photo_urls.each do |url| %>
+    <%= image_tag url %>
+  <% end %>
+<% end %>
